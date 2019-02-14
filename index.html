@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vacations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+</head>
+<body>
+    <div id="datepicker"></div>
+    <div id="infos">
+        <form  class="form-group">
+            <label for="place">Lieu : </label><input type="text" class="form-control" name="place" id="place" onchange="saveInfos();"><br>
+            <label for="startTime">Heure de d&eacute;but : </label><input type="time" class="form-control" name="startTime" id="startTime" value="00:00" onchange="saveInfos();"><br>
+            <label for="endTime">Heure de fin : </label><input type="time" class="form-control" name="endTime" id="endTime" value="00:00" onchange="saveInfos();"><br>
+            <label for="paid">Payé : </label><input type="checkbox" class="form-control" id="paid" onchange="saveInfos();">
+        </form>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
