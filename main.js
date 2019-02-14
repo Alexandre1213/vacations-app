@@ -14,7 +14,7 @@ app.get(/\/[0-9]{6}/gm, (req, res) => {
     let id = req.path.substr(1, 6);
     connection.query('SELECT data FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
         if (error) throw error;
-        res.send('The solution is: ', results[0]);
+        res.send(results[0]);
     });
 });
 
