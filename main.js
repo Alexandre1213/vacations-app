@@ -29,15 +29,17 @@ app.get(/\/[0-9]{6}/gm, (req, res) => {
 app.post(/\/[0-9]{6}/gm, (req, res) => {
   console.log('POST');
   let id = req.path.substr(1, 6);
+  let ndata = req.body;
+  console.log(ndata);
   connection.query('SELECT * FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
       if (error) throw error;
 
       if(results == []) {
           // INSERT INTO
-          connection.query("INSERT INTO user_data VALUES (\'" + id + "\', \'" + req.body + "\')", function (error, results, fields) { if (error) throw error; console.log(results); });
+          connection.query("INSERT INTO user_data VALUES (\'" + id + "\', \'" + ndata + "\')", function (error, results, fields) { if (error) throw error; console.log(results); });
       } else {
           // UPDATE
-          //connection.query('SELECT * FROM user_data WHERE u_id = ' + id, function (error, results, fields) {});
+          connection.query(`UPDATE user_data SET data = '${ndata}' WHERE u_id = '${id}'`, function (error, results, fields) { if (error) throw error; console.log(results); });
       }
 
       res.status(200).end();
