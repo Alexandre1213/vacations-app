@@ -127,6 +127,9 @@ function loadContent(u_id) {
                                 if(restext != 'undefined') {
                                     console.log(restext);
                                     infos = jsonToMap(restext);
+                                    saveState();
+                                    generateDatePicker();
+                                    showInfos();
                                 }
                             });
                     });
@@ -135,6 +138,9 @@ function loadContent(u_id) {
                     .then(restext => {
                         if(restext != 'undefined') {
                             infos = jsonToMap(restext);
+                            saveState();
+                            generateDatePicker();
+                            showInfos();
                         }
                     });
             }
