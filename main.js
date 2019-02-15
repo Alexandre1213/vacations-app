@@ -36,7 +36,7 @@ app.post(/\/[0-9]{6}/gm, (req, res) => {
 
       if(results == []) {
           // INSERT INTO
-          connection.query("INSERT INTO user_data VALUES (\'" + id + "\', \'" + ndata + "\')", function (error, results, fields) { if (error) throw error; console.log(results); });
+          connection.query(`INSERT INTO user_data VALUES ('${id}', 'typical value')`, function (error, results, fields) { if (error) throw error; console.log(results); });
       } else {
           // UPDATE
           connection.query(`UPDATE user_data SET data = '${ndata}' WHERE u_id = '${id}'`, function (error, results, fields) { if (error) throw error; console.log(results); });
