@@ -121,9 +121,9 @@ function loadContent(u_id) {
             console.log('res.body =', res.text());
             if(res.status == 404) {
                 fetch('https://vacations-apps.herokuapp.com/' + u_id)
-                    .then(res => {
-                        if(res.text() != 'undefined') {
-                            infos = jsonToMap(res.text());
+                    .then(restwo => {
+                        if(restwo.text() != 'undefined') {
+                            infos = jsonToMap(restwo.text());
                         }
                     });
             } else {
