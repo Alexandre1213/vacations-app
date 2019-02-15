@@ -124,12 +124,12 @@ function loadContent(u_id) {
                     .then(restwo => {
                         if(restwo.text() != 'undefined') {
                             console.log(restwo);
-                            infos = jsonToMap(restwo.text());
+                            infos = jsonToMap(restwo.clone().text());
                         }
                     });
             } else {
                 if(res.text() != 'undefined') {
-                    infos = jsonToMap(res.text());
+                    infos = jsonToMap(res.clone().text());
                 }
             }
         });
