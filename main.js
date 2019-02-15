@@ -13,12 +13,12 @@ const port = process.env.PORT || 5000;
 app.get(/\/[0-9]{6}/gm, (req, res) => {
     console.log('GET');
     let id = req.path.substr(1, 6);
-    let data = '';
-    connection.query('SELECT data FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
-        if(results[0] == undefined) { res.send('undefined'); return; }
-        if (error) throw error;
-        data = results[0].data;
-    });
+    let data = 'lol';
+    // connection.query('SELECT data FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
+    //     if(results[0] == undefined) { res.send('undefined'); return; }
+    //     if (error) throw error;
+    //     data = results[0].data;
+    // });
     return res.status(200).send(data).end();
 });
 
