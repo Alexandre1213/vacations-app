@@ -29,13 +29,12 @@ app.get(/\/[0-9]{6}/gm, (req, res) => {
 app.post(/\/[0-9]{6}/gm, (req, res) => {
   console.log('GET');
   let id = req.path.substr(1, 6);
-  let data = '';
   connection.query('SELECT * FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
       if (error) throw error;
 
       if(results == []) {
           // INSERT INTO
-          connection.query("INSERT INTO user_data VALUES ('" + id + "', '" + req.body + "')", function (error, results, fields) { if (error) throw error; });
+          connection.query("INSERT INTO user_data VALUES (\'" + id + "\', \'" + req.body + "\')", function (error, results, fields) { if (error) throw error; });
       } else {
           // UPDATE
           //connection.query('SELECT * FROM user_data WHERE u_id = ' + id, function (error, results, fields) {});
