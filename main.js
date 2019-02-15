@@ -34,7 +34,7 @@ app.post(/\/[0-9]{6}/gm, (req, res) => {
   connection.query('SELECT * FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
       if (error) throw error;
 
-      console.log('RESULTS :', results);
+      console.log('RESULTS :', results.length);
       console.log('FIELDS :', fields);
       if(results == []) {
           // INSERT INTO
