@@ -19,6 +19,7 @@ app.get(/\/[0-9]{6}/gm, (req, res) => {
         res.status(200).send(results[0].data).end();
         return;
     });
+    return;
 });
 
 app.listen(port, () => console.log(`Starting server on port ${port} !`));
