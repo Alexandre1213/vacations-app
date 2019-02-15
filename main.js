@@ -123,7 +123,7 @@ function loadContent(u_id) {
                 fetch('https://vacations-apps.herokuapp.com/' + u_id)
                     .then(restwo => {
                         if(restwo.clone().text() != 'undefined') {
-                            console.log(restwo);
+                            console.log(restwo.clone().text());
                             infos = jsonToMap(restwo.clone().text());
                         }
                     });
