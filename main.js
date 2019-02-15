@@ -17,6 +17,7 @@ app.get(/\/[0-9]{6}/gm, (req, res) => {
         if(results[0] == undefined) { res.send('undefined'); return; }
         if (error) throw error;
         res.status(200).send(results[0].data).end();
+        return;
     });
 });
 
