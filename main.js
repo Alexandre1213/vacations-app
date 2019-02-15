@@ -114,4 +114,12 @@ function saveState() {
     infos = jsonToMap(localStorage.getItem('infos'));
 }
 
+function loadContent(u_id) {
+    if(!/\/[0-9]{6}/gm.test(u_id)) { console.log('String don\'t match.'); return; }
+    fetch('https://vacations-apps.herokuapp.com/' + u_id)
+        .then(res => {
+            console.log(res);
+        });
+}
+
 generateDatePicker();
