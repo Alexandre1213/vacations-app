@@ -118,17 +118,17 @@ function loadContent(u_id) {
     if(!/[0-9]{6}/gm.test(u_id)) { console.log('String don\'t match.'); return; }
     fetch('https://vacations-apps.herokuapp.com/' + u_id)
         .then(res => {
-            console.log('res.body =', res.text());
+            console.log('res.body =', res.clone().text());
             if(res.status == 404) {
                 fetch('https://vacations-apps.herokuapp.com/' + u_id)
                     .then(restwo => {
-                        if(restwo.text() != 'undefined') {
+                        if(restwo.clone().text() != 'undefined') {
                             console.log(restwo);
                             infos = jsonToMap(restwo.clone().text());
                         }
                     });
             } else {
-                if(res.text() != 'undefined') {
+                if(res.clone().text() != 'undefined') {
                     infos = jsonToMap(res.clone().text());
                 }
             }
