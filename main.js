@@ -32,8 +32,16 @@ app.post(/\/[0-9]{6}/gm, (req, res) => {
   let data = '';
   connection.query('SELECT * FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
       if (error) throw error;
-      console.log(results);
-      res.status(200).send(results).end();
+
+      if(results == []) {
+          // INSERT INTO
+          connection.query("INSERT INTO user_data VALUES ('" + id + "', '" + req.body + "')", function (error, results, fields) { if (error) throw error; });
+      } else {
+          // UPDATE
+          //connection.query('SELECT * FROM user_data WHERE u_id = ' + id, function (error, results, fields) {});
+      }
+
+      res.status(200).end();
   });
   return;
 });
