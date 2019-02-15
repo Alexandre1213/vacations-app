@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
   password : process.env.DB_PASSWD,
   database : process.env.DB_NAME
 });
-connection.connect();
+//connection.connect();
 const port = process.env.PORT || 5000;
 
 app.get(/\/[0-9]{6}/gm, (req, res) => {
