@@ -15,7 +15,7 @@ app.get(/\/[0-9]{6}/gm, (req, res) => {
     connection.query('SELECT data FROM user_data WHERE u_id = ' + id, function (error, results, fields) {
         if(results[0] == undefined) { res.send('undefined'); return; }
         if (error) throw error;
-        res.text(results[0].data);
+        res.send(results[0].data);
     });
 });
 
