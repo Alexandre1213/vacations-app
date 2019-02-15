@@ -126,6 +126,7 @@ function loadContent(u_id) {
                             .then(restext => {
                                 if(restext != 'undefined') {
                                     console.log(restext);
+                                    console.log(jsonToMap(restext));
                                     infos = jsonToMap(restext);
                                     saveState();
                                     generateDatePicker();
