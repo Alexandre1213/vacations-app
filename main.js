@@ -25,7 +25,7 @@ var selectedY = parseInt(localStorage.getItem('selected').split('/')[2]);
 var selectedM = parseInt(localStorage.getItem('selected').split('/')[1]);
 var selectedD = parseInt(localStorage.getItem('selected').split('/')[0]);
 var infos = '';
-loadContent(localStorage.getItem('l_id'));
+loadContent(localStorage.getItem('l_id') || localStorage.getItem('infos'));
 
 function generateDatePicker() {
     let maindiv = document.getElementById('datepicker');
@@ -110,6 +110,18 @@ function changeMonth(chg) {
 function saveState() {
     localStorage.setItem('selected', selectedD.toString() + '/' + selectedM.toString() + '/' + selectedY.toString());
     localStorage.setItem('infos', mapToJson(infos));
+
+    // Set JSON string on database
+    fetch('https://vacations-apps.herokuapp.com/' + localStorage.getItem('l_id'), {
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain",
+        },
+        body: mapToJson(infos),
+    })
+    .then(res => {
+        console.log(res);
+    });
 
     selected = localStorage.getItem('selected');
     infos = jsonToMap(localStorage.getItem('infos'));
