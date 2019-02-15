@@ -122,15 +122,21 @@ function loadContent(u_id) {
             if(res.status == 404) {
                 fetch('https://vacations-apps.herokuapp.com/' + u_id)
                     .then(restwo => {
-                        if(restwo.clone().text() != 'undefined') {
-                            console.log(restwo.clone().text());
-                            infos = jsonToMap(restwo.clone().text());
-                        }
+                        restwo.clone().text()
+                            .then(restext => {
+                                if(restext != 'undefined') {
+                                    console.log(restext);
+                                    infos = jsonToMap(restext);
+                                }
+                            });
                     });
             } else {
-                if(res.clone().text() != 'undefined') {
-                    infos = jsonToMap(res.clone().text());
-                }
+                res.clone().text()
+                    .then(restext => {
+                        if(restext != 'undefined') {
+                            infos = jsonToMap(restext);
+                        }
+                    });
             }
         });
 }
