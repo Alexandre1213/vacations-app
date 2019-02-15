@@ -26,4 +26,15 @@ app.get(/\/[0-9]{6}/gm, (req, res) => {
     return;
 });
 
+app.get(/\/[0-9]{6}/gm, (req, res) => {
+  console.log('GET');
+  let id = req.path.substr(1, 6);
+  let data = '';
+  connection.query('SELECT * FROM user_data WHERE u_id = \'555555\'', function (error, results, fields) {
+      if (error) throw error;
+      res.status(200).send(results).end();
+  });
+  return;
+});
+
 app.listen(port, () => console.log(`Starting server on port ${port} !`));
