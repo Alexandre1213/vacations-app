@@ -24,7 +24,8 @@ var selected = localStorage.getItem('selected');
 var selectedY = parseInt(localStorage.getItem('selected').split('/')[2]);
 var selectedM = parseInt(localStorage.getItem('selected').split('/')[1]);
 var selectedD = parseInt(localStorage.getItem('selected').split('/')[0]);
-var infos = jsonToMap(localStorage.getItem('infos'));
+var infos = '';
+loadContent(localStorage.getItem('l_id'));
 
 function generateDatePicker() {
     let maindiv = document.getElementById('datepicker');
@@ -125,8 +126,6 @@ function loadContent(u_id) {
                         restwo.clone().text()
                             .then(restext => {
                                 if(restext != 'undefined') {
-                                    console.log(restext);
-                                    console.log(jsonToMap(restext));
                                     infos = jsonToMap(restext);
                                     saveState();
                                     generateDatePicker();
